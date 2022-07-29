@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="contact" id="contact">
+	    
+	    <h1 class="heading">
+	        <span>D</span>
+	        <span>E</span>
+	        <span>S</span>
+	        <span>T</span>
+	        <span>I</span>
+	        <span>N</span>
+	        <span>A</span>
+	        <span>T</span>
+	        <span>I</span>
+	        <span>O</span>
+	        <span>N</span>
+	    </h1>
+	
+	    <div class="row">
+	
+	        <div class="image">
+	            <img src="images/contact-img.svg" alt="">
+	        </div>
+	
+	        <form action="Contact" method="post">
+	            <div class="inputBox">
+	                <input type="text" placeholder="id" name="id">
+	                <input type="text" placeholder="place" name="place">
+	            </div>
+	            <div class="inputBox">
+	            	<input type="number" placeholder="price" name="price">
+	            	<input type="file" placeholder="photo" name="price">
+	            </div>
+	            <div class="inputBox">
+	            	<textarea placeholder="Description" name="Description" id="" cols="30" rows="10"></textarea>
+	            </div>
+	            <input type="submit" class="btn" value="Add Data">
+	        </form>
+	
+	    </div>
+	    
+	</section>
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SignUp</title>
+	
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="WEB-INF/style.css">
+</head>
+<body>
+	<h1>Welocome to SignUp page</h1>
+	<!-- SignUp FORM -->
+	<div class="signup-form-container">
+	
+	    <form action="">
+	        <h3>SignUp</h3>
+	        <input type="text" class="box" placeholder="enter your First Name">
+	        <br>
+	        <input type="text" class="box" placeholder="enter your Last Name">
+	        <br>
+	        <input type="text" class="box" placeholder="enter your Phone No.">
+	        <br>
+	        <input type="text" class="box" placeholder="enter your city">
+	        <br>
+	        <input type="state" class="box" placeholder="enter your state">
+	        <br>
+	        <input type="email" class="box" placeholder="enter your email">
+	        <br>
+	        <input type="password" class="box" placeholder="enter your password">
+	        <br>
+	        
+	        <input type="submit" value="signup now" class="btn">
+	    </form>
+	</div>
+	
+</body>
+</html>

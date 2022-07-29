@@ -1,0 +1,104 @@
+package travel;
+import java.sql.*;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+/**
+ * Servlet implementation class Admin
+ */
+@WebServlet("/Admin")
+public class Admin extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Admin() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @throws ClassNotFoundException 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html");  
+		PrintWriter pw=response.getWriter();
+		String id = request.getParameter("id");
+		String place = request.getParameter("place");
+		String price = request.getParameter("price");
+		String descrip = request.getParameter("description");
+		
+		//get file
+		InputStream inputStream = null;
+		Part filePart = request.getPart("photo");
+		
+		if (filePart != null) {
+        	  
+            // Prints out some information
+            // for debugging
+            //System.out.println(filePart.getName());
+            //System.out.println(filePart.getSize());
+            //System.out.println(filePart.getContentType());
+  
+            // Obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+        }
+		
+		String msg = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+          	pw.println("driver loaded");
+          	pw.println("<br>");
+    	    conn = DriverManager.getConnection("jdbc:mysql://localhost/login","root","Vikash@2468");
+            pw.println("connected");
+            
+            String sql =("INSERT INTO description (id, place, descrip, photo) values (?, ?, ?)");
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+
+//            if (inputStream != null) {
+//        		
+//      		  // Fetches the input stream
+//      		  // of the upload file for
+//      		  // the blob column
+//      		  pstm.setBlob(3, inputStream);
+//      		}
+            pstm=conn.prepareStatement("insert into destination values('"+id+"','"+place+"','"+price+"','"+inputStream+"','"+descrip+"')");
+
+            pstm.executeUpdate();
+            pw.println("Record Inserted!");
+            RequestDispatcher rd=request.getRequestDispatcher("index.html");  
+    	    rd.include(request,response);  
+            
+          } 
+        catch (Exception e) {
+        	  e.printStackTrace();
+        }
+		
+	}
+}
